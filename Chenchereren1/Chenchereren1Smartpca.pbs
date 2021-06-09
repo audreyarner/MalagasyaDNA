@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=10:00:00
+#PBS -l pmem=10gb
+
+module load admixture
+
+module load anaconda3
+
+cd $PBS_O_WORKDIR
+
+chmod 755 Chenchereren1Smartpca.sh #PUT FILENAME HERE	
+
+sh Chenchereren1Smartpca.sh
+
+chmod 755 PCAPlotChenchereren1.R #PUT FILENAME HERE	
+
+R --file=/storage/home/ama6560/scratch/Malagasy/Chenchereren1/PCAPlotChenchereren1.R
+
+exit;

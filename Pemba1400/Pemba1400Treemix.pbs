@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=6:00:00
+#PBS -l pmem=20gb
+
+module load anaconda3
+module load plink
+
+cd $PBS_O_WORKDIR
+
+chmod 755 CombinePemba1400Chimp.sh #PUT FILENAME HERE	
+
+sh CombinePemba1400Chimp.sh
+
+chmod 755 Pemba1400aDNAMapfile.R #PUT FILENAME HERE	
+
+R --file=/storage/home/ama6560/scratch/Malagasy/Pemba1400/Treemix/Pemba1400aDNAMapfile.R
+
+chmod 755 TreemixPemba1400.sh #PUT FILENAME HERE	
+
+sh TreemixPemba1400.sh
+
+exit;

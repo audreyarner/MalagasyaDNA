@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=6:00:00
+#PBS -l pmem=20gb
+
+module load anaconda3
+module load plink
+
+cd $PBS_O_WORKDIR
+
+chmod 755 CombineZanzibarChimp.sh #PUT FILENAME HERE	
+
+sh CombineZanzibarChimp.sh
+
+chmod 755 ZanzibaraDNAMapfile.R #PUT FILENAME HERE	
+
+R --file=/storage/home/ama6560/scratch/Malagasy/Zanzibar/Treemix/ZanzibaraDNAMapfile.R
+
+chmod 755 TreemixZanzibar.sh #PUT FILENAME HERE	
+
+sh TreemixZanzibar.sh
+
+exit;

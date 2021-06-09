@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=6:00:00
+#PBS -l pmem=20gb
+
+module load anaconda3
+module load plink
+
+cd $PBS_O_WORKDIR
+
+chmod 755 CombineFingira2500Chimp.sh #PUT FILENAME HERE	
+
+sh CombineFingira2500Chimp.sh
+
+chmod 755 Fingira2500aDNAMapfile.R #PUT FILENAME HERE	
+
+R --file=/storage/home/ama6560/scratch/Malagasy/Fingira2500/Treemix/Fingira2500aDNAMapfile.R
+
+chmod 755 TreemixFingira2500.sh #PUT FILENAME HERE	
+
+sh TreemixFingira2500.sh
+
+exit;

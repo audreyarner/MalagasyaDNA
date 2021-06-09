@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=48:00:00
+#PBS -l pmem=20gb
+
+module load admixture
+
+module load anaconda3
+
+cd $PBS_O_WORKDIR
+
+chmod 755 ZanzibarSmartpca.sh #PUT FILENAME HERE	
+
+sh ZanzibarSmartpca.sh
+
+chmod 755 PCAPlotZanzibar.R #PUT FILENAME HERE	
+
+R --file=/storage/home/ama6560/scratch/Malagasy/Zanzibar/PCAPlotZanzibar.R
+
+exit;

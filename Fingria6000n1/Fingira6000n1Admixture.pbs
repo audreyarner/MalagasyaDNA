@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=24:00:00
+#PBS -l pmem=20gb
+
+module load admixture
+
+module load plink
+
+cd $PBS_O_WORKDIR
+
+chmod 755 Fingira6000n1Admixture.sh #PUT FILENAME HERE	
+
+sh Fingira6000n1Admixture.sh
+
+exit;

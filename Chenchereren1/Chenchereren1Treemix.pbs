@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=6:00:00
+#PBS -l pmem=20gb
+
+module load anaconda3
+module load plink
+
+cd $PBS_O_WORKDIR
+
+chmod 755 CombineChenchereren1Chimp.sh #PUT FILENAME HERE	
+
+sh CombineChenchereren1Chimp.sh
+
+chmod 755 Chenchereren1aDNAMapfile.R #PUT FILENAME HERE	
+
+R --file=/storage/home/ama6560/scratch/IndividaDNA/Treemix/Chenchereren1/Chenchereren1aDNAMapfile.R
+
+chmod 755 TreemixChenchereren1.sh #PUT FILENAME HERE	
+
+sh TreemixChenchereren1.sh
+
+exit;
